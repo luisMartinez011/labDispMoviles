@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="414dp"
+        android:layout_height="130dp"
+        android:background="#2A54D1"
+        android:gravity="clip_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ordenes de Compras"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            tools:visibility="visible" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:background="@android:drawable/alert_light_frame"
+            android:baselineAligned="false"
+            android:ems="10"
+            android:gravity="start"
+            android:hint="Buscar"
+            android:iconifiedByDefault="true" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/idRLContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity">
+
+        <!--on below line we are creating edit text
+             for adding a new item to list-->
+
+<!--        &lt;!&ndash;button for adding item from edit text to list&ndash;&gt;-->
+<!--        <EditText-->
+<!--            android:id="@+id/idEdtItemName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="4dp"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginEnd="4dp"-->
+<!--            android:layout_marginRight="5dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:layout_toLeftOf="@id/idBtnAdd"-->
+<!--            android:hint="Ingresa la Orden de Compra" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/idBtnAdd"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_margin="4dp"-->
+<!--            android:text="Add"-->
+<!--            android:textAllCaps="false" />-->
+
+        <!--list view to display list of languages-->
+        <ListView
+            android:id="@+id/idLVLanguages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+
+        </ListView>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="700dp"
+        android:text="Agregar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
