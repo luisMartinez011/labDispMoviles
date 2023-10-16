@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,28 +15,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = findViewById(R.id.loginBtn);
-        button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, OrdenesDeCompras.class);
-            startActivity(intent);
-        });
-
-
         EditText usernameEditText = findViewById(R.id.usernameBtn);
         EditText passwordEditText = findViewById(R.id.passwordBtn);
         Button loginButton = findViewById(R.id.loginBtn);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String username = usernameEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
 
-                if (isCredentialsValid(username, password)) {
-                    Intent intent = new Intent(MainActivity.this, OrdenesDeCompras.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(MainActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-                }
+        loginButton.setOnClickListener(view -> {
+            String username = usernameEditText.getText().toString();
+            String password = passwordEditText.getText().toString();
+
+            if (isCredentialsValid(username, password)) {
+                Intent intent = new Intent(MainActivity.this, OrdenesDeCompras.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(MainActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
             }
         });
     }
