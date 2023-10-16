@@ -84,5 +84,10 @@ public class OrdenesDeCompras extends AppCompatActivity {
             }
         });
 
+        Button backButton = findViewById(R.id.returnButton);
+        backButton.setOnClickListener(v -> {
+            finish();
+        });
+
     }
 }

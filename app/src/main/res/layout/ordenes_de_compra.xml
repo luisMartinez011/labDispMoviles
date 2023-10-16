@@ -27,7 +27,7 @@ android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Ordenes de Compras"
             android:textColor="@color/black"
-            android:textSize="30dp"
+            android:textSize="30sp"
             tools:visibility="visible" />
 
         <SearchView
@@ -43,6 +43,14 @@ android:layout_height="match_parent"
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/returnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Regresar"
+        app:layout_constraintStart_toEndOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="@+id/searchView" />
 
     <RelativeLayout
         android:id="@+id/idRLContainer"
@@ -82,7 +90,7 @@ android:layout_height="match_parent"
         <ListView
             android:id="@+id/idLVLanguages"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
 
         </ListView>
