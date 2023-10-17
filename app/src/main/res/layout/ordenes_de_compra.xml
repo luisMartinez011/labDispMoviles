@@ -44,14 +44,6 @@ android:layout_height="match_parent"
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/returnButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Regresar"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:layout_constraintTop_toTopOf="@+id/searchView" />
-
     <RelativeLayout
         android:id="@+id/idRLContainer"
         android:layout_width="match_parent"
@@ -61,34 +53,8 @@ android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".MainActivity">
 
-        <!--on below line we are creating edit text
-             for adding a new item to list-->
-
-<!--        &lt;!&ndash;button for adding item from edit text to list&ndash;&gt;-->
-<!--        <EditText-->
-<!--            android:id="@+id/idEdtItemName"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="4dp"-->
-<!--            android:layout_marginTop="4dp"-->
-<!--            android:layout_marginEnd="4dp"-->
-<!--            android:layout_marginRight="5dp"-->
-<!--            android:layout_marginBottom="4dp"-->
-<!--            android:layout_toLeftOf="@id/idBtnAdd"-->
-<!--            android:hint="Ingresa la Orden de Compra" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/idBtnAdd"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_margin="4dp"-->
-<!--            android:text="Add"-->
-<!--            android:textAllCaps="false" />-->
-
-        <!--list view to display list of languages-->
         <ListView
-            android:id="@+id/idLVLanguages"
+            android:id="@+id/listaOrdenesCompra"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -105,5 +71,16 @@ android:layout_height="match_parent"
         android:text="Agregar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/returnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginBottom="60dp"
+        android:text="Regresar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="@+id/searchView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

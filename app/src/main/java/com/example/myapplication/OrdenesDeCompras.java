@@ -3,16 +3,11 @@ package com.example.myapplication;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
-import com.example.myapplication.R;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import android.widget.SearchView;
 
@@ -32,7 +27,7 @@ public class OrdenesDeCompras extends AppCompatActivity {
         setContentView(R.layout.ordenes_de_compra);
 
         // on below line we are initializing our variables.
-        languageLV = findViewById(R.id.idLVLanguages);
+        languageLV = findViewById(R.id.listaOrdenesCompra);
 //        addBtn = findViewById(R.id.idBtnAdd);
 //        itemEdt = findViewById(R.id.idEdtItemName);
         searchView=findViewById(R.id.searchView);

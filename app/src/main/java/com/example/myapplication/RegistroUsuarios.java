@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,18 +19,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class RegistroUsuarios extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.registro_usuario);
 
         EditText usernameEditText = findViewById(R.id.usernameBtn);
         EditText passwordEditText = findViewById(R.id.passwordBtn);
         Button loginButton = findViewById(R.id.loginBtn);
-        Button registerButton = findViewById(R.id.buttonRegistrarse);
+
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -38,35 +40,22 @@ public class MainActivity extends AppCompatActivity {
                 String email = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener( RegistroUsuarios.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    Intent intent = new Intent(MainActivity.this, OrdenesDeCompras.class);
+                                    Log.d(TAG, "createUserWithEmail:success");
+                                    Intent intent = new Intent(RegistroUsuarios.this, OrdenesDeCompras.class);
                                     startActivity(intent);
+                                    finish();
                                 } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(MainActivity.this, "Autenticacion falladas",
-                                            Toast.LENGTH_SHORT).show();
+                                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                    Toast.makeText(RegistroUsuarios.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
 
-
-
-            }
-        });
-
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                    Intent intent = new Intent(MainActivity.this, RegistroUsuarios.class);
-                    startActivity(intent);
 
             }
         });
