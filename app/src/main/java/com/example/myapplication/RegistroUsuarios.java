@@ -29,7 +29,7 @@ public class RegistroUsuarios extends AppCompatActivity {
 
         EditText usernameEditText = findViewById(R.id.usernameBtn);
         EditText passwordEditText = findViewById(R.id.passwordBtn);
-        Button loginButton = findViewById(R.id.loginBtn);
+        Button loginButton = findViewById(R.id.intentoRegistroBtn);
 
 
         // Initialize Firebase Auth

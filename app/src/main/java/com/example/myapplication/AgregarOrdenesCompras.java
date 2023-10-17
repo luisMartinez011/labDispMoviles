@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,10 +16,12 @@ import android.widget.SearchView;
 public class AgregarOrdenesCompras extends AppCompatActivity {
 
     // on below line we are creating variables.
-    private ListView languageLV;
+
     private Button addBtn;
-    private EditText itemEdt;
-    private ArrayList<String> lngList;
+    private EditText numeroOrden;
+    private EditText descripcionOrden;
+    private ArrayList<String> numerosOrdenes;
+    private ArrayList<String> descripcionOrdenes;
     private SearchView searchView;
 
     @Override
@@ -27,39 +30,41 @@ public class AgregarOrdenesCompras extends AppCompatActivity {
         setContentView(R.layout.agregar_ordenes_compra);
 
         // on below line we are initializing our variables.
-        languageLV = findViewById(R.id.listaOrdenesCompra);
-//        addBtn = findViewById(R.id.idBtnAdd);
-//        itemEdt = findViewById(R.id.idEdtItemName);
-        searchView=findViewById(R.id.searchView);
+        numeroOrden = findViewById(R.id.agregarNumeroOrden);
+        descripcionOrden = findViewById(R.id.agregarDescripcionOrden);
+        addBtn = findViewById(R.id.idBtnAddOrdenesCompra);
 
 
-        lngList = new ArrayList<>();
+        if( getIntent().getStringArrayListExtra("numerosOrdenesExistentes") != null){
+            numerosOrdenes = getIntent().getStringArrayListExtra("numerosOrdenesExistentes");
+            descripcionOrdenes = getIntent().getStringArrayListExtra("descripcionOrdenesExistentes");
+        }else{
+            numerosOrdenes = new ArrayList<>();
+            descripcionOrdenes = new ArrayList<>();
+        }
 
-        // on below line we are adding items to our list
-        lngList.add("Orden #890");
-        lngList.add("Orden #320");
 
-        // on the below line we are initializing the adapter for our list view.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lngList);
 
-        // on below line we are setting adapter for our list view.
-        languageLV.setAdapter(adapter);
+
+
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // on below line we are getting text from edit text
-                String item = itemEdt.getText().toString();
+                String numero = "Orden #: " + numeroOrden.getText().toString();
+                String descripcion = descripcionOrden.getText().toString();
+
 
                 // on below line we are checking if item is not empty
-                if (!item.isEmpty()) {
+                if (!numero.isEmpty()) {
 
                     // on below line we are adding item to our list.
-                    lngList.add(item);
-
-                    // on below line we are notifying adapter
-                    // that data in list is updated to
-                    // update our list view.
-                    adapter.notifyDataSetChanged();
+                    numerosOrdenes.add(numero);
+                    descripcionOrdenes.add(descripcion);
+                    Intent intent = new Intent(AgregarOrdenesCompras.this, OrdenesDeCompras.class);
+                    intent.putStringArrayListExtra("numeroOrdenes",numerosOrdenes);
+                    intent.putStringArrayListExtra("descripcionOrdenes",descripcionOrdenes);
+                    startActivity(intent);
                 }
 
             }

@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-
+//                Intent intent = new Intent(MainActivity.this, OrdenesDeCompras.class);
+//                                    startActivity(intent);
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override

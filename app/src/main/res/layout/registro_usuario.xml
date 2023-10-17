@@ -44,12 +44,12 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+        app:layout_constraintBottom_toTopOf="@+id/intentoRegistroBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/intentoRegistroBtn"
         android:layout_width="309dp"
         android:layout_height="63dp"
         android:layout_marginBottom="192dp"

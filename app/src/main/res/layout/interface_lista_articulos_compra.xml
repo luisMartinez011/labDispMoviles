@@ -29,14 +29,14 @@
                 android:padding="2dp"
                 android:textColor="#4d4d4d" />
             <TextView
-                android:id="@+id/listaNumeroSerie"
+                android:id="@+id/listaNumeroSerieArticulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:layout_marginLeft="10dp" />
 
             <TextView
-                android:id="@+id/listaDescripcion"
+                android:id="@+id/listaDescripcionArticulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
