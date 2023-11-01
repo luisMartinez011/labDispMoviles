@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //admin@mail.com Administrador777
     private boolean isCredentialsValid(String username, String password) {
         return username.equals("admin") && password.equals("admin123");
     }
