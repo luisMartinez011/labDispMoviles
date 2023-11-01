@@ -36,7 +36,6 @@ public class OrdenesDeCompras extends AppCompatActivity {
         searchView=findViewById(R.id.searchView);
         addBtn = findViewById(R.id.buttonAgregarOrdenes);
 
-
 //        lngList = new ArrayList<>();
 //        descripcionOrdenesList = new ArrayList<>();
 //        // on below line we are adding items to our list

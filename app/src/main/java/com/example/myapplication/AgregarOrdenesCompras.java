@@ -15,8 +15,6 @@ import android.widget.SearchView;
 
 public class AgregarOrdenesCompras extends AppCompatActivity {
 
-    // on below line we are creating variables.
-
     private Button addBtn;
     private EditText numeroOrden;
     private EditText descripcionOrden;
@@ -34,7 +32,6 @@ public class AgregarOrdenesCompras extends AppCompatActivity {
         descripcionOrden = findViewById(R.id.agregarDescripcionOrden);
         addBtn = findViewById(R.id.idBtnAddOrdenesCompra);
 
-
         if( getIntent().getStringArrayListExtra("numerosOrdenesExistentes") != null){
             numerosOrdenes = getIntent().getStringArrayListExtra("numerosOrdenesExistentes");
             descripcionOrdenes = getIntent().getStringArrayListExtra("descripcionOrdenesExistentes");
@@ -43,17 +40,12 @@ public class AgregarOrdenesCompras extends AppCompatActivity {
             descripcionOrdenes = new ArrayList<>();
         }
 
-
-
-
-
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // on below line we are getting text from edit text
                 String numero = "Orden #: " + numeroOrden.getText().toString();
                 String descripcion = descripcionOrden.getText().toString();
-
 
                 // on below line we are checking if item is not empty
                 if (!numero.isEmpty()) {
@@ -69,8 +61,5 @@ public class AgregarOrdenesCompras extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 }
