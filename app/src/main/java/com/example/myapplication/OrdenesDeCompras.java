@@ -18,23 +18,18 @@ import android.widget.SearchView;
 
 public class OrdenesDeCompras extends AppCompatActivity {
 
-    // on below line we are creating variables.
-    private ListView languageLV;
-    private Button addBtn;
     private EditText itemEdt;
     private ArrayList<String> lngList;
     private ArrayList<String> descripcionOrdenesList;
-    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ordenes_de_compra);
 
-        // on below line we are initializing our variables.
-        languageLV = (ListView)findViewById(R.id.listaOrdenesCompra);
-        searchView=findViewById(R.id.searchView);
-        addBtn = findViewById(R.id.buttonAgregarOrdenes);
+        ListView languageLV = (ListView) findViewById(R.id.listaOrdenesCompra);
+        SearchView searchView = findViewById(R.id.searchView);
+        Button addBtn = findViewById(R.id.buttonAgregarOrdenes);
 
 //        lngList = new ArrayList<>();
 //        descripcionOrdenesList = new ArrayList<>();
