@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -82,6 +83,13 @@ public class DBHandler extends SQLiteOpenHelper {
         String[] selectionArgs = { String.valueOf(userId) };
         db.delete(TABLE_NAME_USERS, selection, selectionArgs);
         db.close();
+    }
+
+    public Cursor getUserByEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = EMAIL_COL_USERS + " = ?";
+        String[] selectionArgs = { email };
+        return db.query(TABLE_NAME_USERS, null, selection, selectionArgs, null, null, null);
     }
 
 }
