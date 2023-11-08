@@ -92,4 +92,13 @@ public class DBHandler extends SQLiteOpenHelper {
         return db.query(TABLE_NAME_USERS, null, selection, selectionArgs, null, null, null);
     }
 
+    public void initAdminUser() {
+        String adminName = "Admin";
+        String adminPassword = "admin123"; // Please use a secure password in production
+        String adminEmail = "admin@admin.dev";
+
+        addNewUser(adminName, adminPassword, adminEmail);
+    }
+
+
 }

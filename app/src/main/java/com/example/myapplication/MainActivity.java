@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 String email = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
                 DBHandler dbHandler = new DBHandler(MainActivity.this);
+                dbHandler.initAdminUser();
                 Cursor cursor = dbHandler.getUserByEmail(email);
 
                 if (cursor.moveToFirst()) {
