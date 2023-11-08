@@ -19,8 +19,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_NAME_USERS = "users";
     private static final String ID_COL_USERS = "id";
     private static final String NAME_COL_USERS = "nombre";
-    private static final String EMAIL_COL_USERS = "email";
-    private static final String PASSWORD_COL_USERS = "password";
+    public static final String EMAIL_COL_USERS = "email";
+    public static final String PASSWORD_COL_USERS = "password";
 
     // creating a constructor for our database handler.
     public DBHandler(Context context) {
