@@ -26,26 +26,26 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-
                 DBHandler dbHandler = new DBHandler(MainActivity.this);
-
                 Cursor cursor = dbHandler.getUserByEmail(email);
+
                 if (cursor.moveToFirst()) {
-                    String storedPassword = cursor.getString(cursor.getColumnIndex(DBHandler.PASSWORD_COL_USERS));
-                    // Check if the entered password matches the stored password
+                    int passwordColumnIndex = cursor.getColumnIndex(DBHandler.PASSWORD_COL_USERS);
+                    // User with the provided email exists.
+                    String storedPassword = cursor.getString(passwordColumnIndex);
+                    cursor.close();
+
                     if (password.equals(storedPassword)) {
-                        // Passwords match, login successful
                         Intent intent = new Intent(MainActivity.this, OrdenesDeCompras.class);
                         startActivity(intent);
                     } else {
-                        // Passwords do not match, login failed
-                        Toast.makeText(MainActivity.this, "Autenticacion falladas", Toast.LENGTH_SHORT).show();
+                        // Password does not match.
+                        Toast.makeText(MainActivity.this, "Incorrect password", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    // User not found, login failed
-                    Toast.makeText(MainActivity.this, "Autenticacion falladas", Toast.LENGTH_SHORT).show();
+                    // User with the provided email does not exist.
+                    Toast.makeText(MainActivity.this, "User not found", Toast.LENGTH_SHORT).show();
                 }
-                cursor.close();
             }
         });
 
@@ -57,10 +57,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    //admin@mail.com Administrador777
-    private boolean isCredentialsValid(String username, String password) {
-        return username.equals("admin") && password.equals("admin123");
-    }
-
 }
