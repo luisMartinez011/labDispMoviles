@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -18,8 +19,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_NAME_USERS = "users";
     private static final String ID_COL_USERS = "id";
     private static final String NAME_COL_USERS = "nombre";
-    private static final String EMAIL_COL_USERS = "email";
-    private static final String PASSWORD_COL_USERS = "password";
+    public static final String EMAIL_COL_USERS = "email";
+    public static final String PASSWORD_COL_USERS = "password";
 
     // creating a constructor for our database handler.
     public DBHandler(Context context) {
@@ -83,5 +84,21 @@ public class DBHandler extends SQLiteOpenHelper {
         db.delete(TABLE_NAME_USERS, selection, selectionArgs);
         db.close();
     }
+
+    public Cursor getUserByEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = EMAIL_COL_USERS + " = ?";
+        String[] selectionArgs = { email };
+        return db.query(TABLE_NAME_USERS, null, selection, selectionArgs, null, null, null);
+    }
+
+    public void initAdminUser() {
+        String adminName = "Admin";
+        String adminPassword = "admin123"; // Please use a secure password in production
+        String adminEmail = "admin@admin.dev";
+
+        addNewUser(adminName, adminPassword, adminEmail);
+    }
+
 
 }

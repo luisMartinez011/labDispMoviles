@@ -55,7 +55,7 @@
         android:layout_marginBottom="192dp"
         android:backgroundTint="#0B21E1"
         android:stateListAnimator="@android:anim/anticipate_interpolator"
-        android:text="Iniciar Sesion"
+        android:text="Registrar"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
