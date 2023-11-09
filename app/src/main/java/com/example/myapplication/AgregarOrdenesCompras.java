@@ -18,7 +18,6 @@ public class AgregarOrdenesCompras extends AppCompatActivity {
     private EditText descripcionOrden;
     private ArrayList<String> numerosOrdenes;
     private ArrayList<String> descripcionOrdenes;
-    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,33 +31,25 @@ public class AgregarOrdenesCompras extends AppCompatActivity {
         descripcionOrden = findViewById(R.id.agregarDescripcionOrden);
         Button addBtn = findViewById(R.id.idBtnAddOrdenesCompra);
 
-        if( getIntent().getStringArrayListExtra("numerosOrdenesExistentes") != null){
-            numerosOrdenes = getIntent().getStringArrayListExtra("numerosOrdenesExistentes");
-            descripcionOrdenes = getIntent().getStringArrayListExtra("descripcionOrdenesExistentes");
-        }else{
-            numerosOrdenes = new ArrayList<>();
-            descripcionOrdenes = new ArrayList<>();
-        }
-
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // on below line we are getting text from edit text
+                // Get the order details from the EditText fields.
                 String numero = "Orden #: " + numeroOrden.getText().toString();
                 String descripcion = descripcionOrden.getText().toString();
 
-                // on below line we are checking if item is not empty
-                if (numeroOrden.getText().toString().length()>1) {
-                    // on below line we are adding item to our list.
-                    numerosOrdenes.add(numero);
-                    descripcionOrdenes.add(descripcion);
+                // Check if the order name is not empty.
+                if (numeroOrden.getText().toString().length() > 1) {
+                    // Add the order to the database using the DBHandler.
+                    DBHandler dbHandler = new DBHandler(AgregarOrdenesCompras.this);
+                    dbHandler.addNewOrder(numero, descripcion);
+
+                    // Return to the OrdenesDeCompras activity.
                     Intent intent = new Intent(AgregarOrdenesCompras.this, OrdenesDeCompras.class);
-                    intent.putStringArrayListExtra("numeroOrdenes",numerosOrdenes);
-                    intent.putStringArrayListExtra("descripcionOrdenes",descripcionOrdenes);
                     startActivity(intent);
                 }
-
             }
         });
+
     }
 }
