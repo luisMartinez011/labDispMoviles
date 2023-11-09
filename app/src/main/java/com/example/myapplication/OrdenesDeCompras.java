@@ -1,24 +1,20 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-
-import android.widget.SearchView;
 
 
 public class OrdenesDeCompras extends AppCompatActivity {
-
-    private EditText itemEdt;
     private ArrayList<String> lngList;
     private ArrayList<String> descripcionOrdenesList;
 
@@ -31,46 +27,32 @@ public class OrdenesDeCompras extends AppCompatActivity {
         SearchView searchView = findViewById(R.id.searchView);
         Button addBtn = findViewById(R.id.buttonAgregarOrdenes);
 
-//        lngList = new ArrayList<>();
-//        descripcionOrdenesList = new ArrayList<>();
-//        // on below line we are adding items to our list
-//        lngList.add("Orden #890");
-//        lngList.add("Orden #320");
-//
-//        descripcionOrdenesList.add("Descripcion 1");
-//        descripcionOrdenesList.add("Descripcion 2");
+        DBHandler dbHandler = new DBHandler(OrdenesDeCompras.this);
 
-        if( getIntent().getStringArrayListExtra("numeroOrdenes") != null){
-            lngList = getIntent().getStringArrayListExtra("numeroOrdenes");
-            descripcionOrdenesList = getIntent().getStringArrayListExtra("descripcionOrdenes");
-        }else{
-            lngList = new ArrayList<>();
-            descripcionOrdenesList = new ArrayList<>();
+        lngList = new ArrayList<>();
+        descripcionOrdenesList = new ArrayList<>();
+
+        Cursor cursor = dbHandler.getAllOrders();
+
+        if (cursor != null){
+            int orderNameIndex = cursor.getColumnIndex(DBHandler.NAME_COL_ORDERS);
+            int orderDescriptionIndex = cursor.getColumnIndex(DBHandler.DESCRIPTION_COL_ORDERS);
+            while (cursor.moveToNext()){
+                String orderName = cursor.getString(orderNameIndex);
+                String orderDescription = cursor.getString(orderDescriptionIndex);
+                lngList.add(orderName);
+                descripcionOrdenesList.add(orderDescription);
+            }
         }
 
-//        lngList = new ArrayList<>();
-//        descripcionOrdenesList = new ArrayList<>();
-//        lngList.add("Orden #890");
-//        lngList.add("Orden #320");
-//
-//        descripcionOrdenesList.add("Descripcion 1");
-//        descripcionOrdenesList.add("Descripcion 2");
-        // on the below line we are initializing the adapter for our list view.
-
         OrdenesDeComprasAdapter adapter=new OrdenesDeComprasAdapter(this, lngList, descripcionOrdenesList);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lngList);
 
-        // on below line we are setting adapter for our list view.
         languageLV.setAdapter(adapter);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // on below line we are getting text from edit text
                 Intent intent = new Intent(OrdenesDeCompras.this, AgregarOrdenesCompras.class);
-                intent.putStringArrayListExtra("numerosOrdenesExistentes",lngList);
-                intent.putStringArrayListExtra("descripcionOrdenesExistentes",descripcionOrdenesList);
                 startActivity(intent);
-
             }
         });
 

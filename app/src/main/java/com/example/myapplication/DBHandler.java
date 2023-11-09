@@ -13,8 +13,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME_ORDERS = "ordenes";
     private static final String ID_COL_ORDERS = "id";
-    private static final String NAME_COL_ORDERS = "nombre";
-    private static final String DESCRIPTION_COL_ORDERS = "description";
+    public static final String NAME_COL_ORDERS = "nombre";
+    public static final String DESCRIPTION_COL_ORDERS = "description";
 
     private static final String TABLE_NAME_USERS = "users";
     private static final String ID_COL_USERS = "id";
@@ -100,5 +100,10 @@ public class DBHandler extends SQLiteOpenHelper {
         addNewUser(adminName, adminPassword, adminEmail);
     }
 
+
+    public Cursor getAllOrders() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.query(TABLE_NAME_ORDERS, null, null, null, null, null, null);
+    }
 
 }
