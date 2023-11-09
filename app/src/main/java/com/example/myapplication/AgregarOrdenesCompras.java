@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import android.widget.SearchView;
 
 public class AgregarOrdenesCompras extends AppCompatActivity {
-
-    DBHandler dbHandler = new DBHandler(getApplicationContext());
     private EditText numeroOrden;
     private EditText descripcionOrden;
     private ArrayList<String> numerosOrdenes;
@@ -25,6 +23,8 @@ public class AgregarOrdenesCompras extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        DBHandler dbHandler = new DBHandler(AgregarOrdenesCompras.this);
         setContentView(R.layout.agregar_ordenes_compra);
 
         // on below line we are initializing our variables.
