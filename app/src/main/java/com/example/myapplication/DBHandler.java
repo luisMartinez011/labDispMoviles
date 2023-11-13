@@ -12,7 +12,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
 
     private static final String TABLE_NAME_ORDERS = "ordenes";
-    private static final String ID_COL_ORDERS = "id";
+    private static final String ID_COL_ORDERS = "id_orders";
     public static final String NAME_COL_ORDERS = "nombre";
     public static final String DESCRIPTION_COL_ORDERS = "description";
 
@@ -21,6 +21,14 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String NAME_COL_USERS = "nombre";
     public static final String EMAIL_COL_USERS = "email";
     public static final String PASSWORD_COL_USERS = "password";
+
+    // ** Articulos
+    private static final String TABLE_NAME_ARTICULOS = "articulos";
+    private static final String ID_COL_ARTICULOS = "id_articulos";
+    public static final String SERIE_COL_ARTICULOS= "numero_serie";
+    public static final String ALIAS_COL_ARTICULOS = "alias";
+    public static final String DESCRIPCION_COL_ARTICULOS = "descripcion";
+    public static final String IMAGEN_COL_ARTICULOS = "imagen";
 
     // creating a constructor for our database handler.
     public DBHandler(Context context) {
@@ -41,6 +49,17 @@ public class DBHandler extends SQLiteOpenHelper {
                 + EMAIL_COL_USERS + " TEXT,"
                 + PASSWORD_COL_USERS + " TEXT)";
         db.execSQL(queryUsers);
+
+        String queryArticulos = "CREATE TABLE " + TABLE_NAME_ARTICULOS + " ("
+                + ID_COL_ARTICULOS + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + SERIE_COL_ARTICULOS + " TEXT,"
+                + ALIAS_COL_ARTICULOS + " TEXT,"
+                + DESCRIPCION_COL_ARTICULOS + " TEXT,"
+                + IMAGEN_COL_ARTICULOS + " TEXT,"
+                + ID_COL_ORDERS + " INTEGER,"
+                + "FOREIGN KEY(" + ID_COL_ORDERS + ") references "
+                + TABLE_NAME_ORDERS + "(" + ID_COL_ORDERS + "))";
+        db.execSQL(queryArticulos);
     }
 
     @Override
@@ -106,4 +125,24 @@ public class DBHandler extends SQLiteOpenHelper {
         return db.query(TABLE_NAME_ORDERS, null, null, null, null, null, null);
     }
 
+
+    //Obtiene todos los articulos que le corresponden a cierta orden
+    public Cursor getAllArticulosByOrder(int orderId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = ID_COL_ORDERS + " = ?";
+        String[] selectionArgs = { String.valueOf(orderId) };
+        Cursor resultado = db.query(TABLE_NAME_ARTICULOS, null, null,  null, null, null, null);
+        return resultado;
+    }
+
+    public void addNewArticulo(String numeroSerie, String alias, String descripcion, int orderId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(SERIE_COL_ARTICULOS, numeroSerie);
+        values.put(ALIAS_COL_ARTICULOS, numeroSerie);
+        values.put(DESCRIPCION_COL_ARTICULOS, descripcion);
+        db.insert(TABLE_NAME_ARTICULOS,null,values);
+        db.close();
+    }
 }

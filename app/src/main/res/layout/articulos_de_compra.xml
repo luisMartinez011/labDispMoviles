@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="414dp"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:background="#2A54D1"
         android:gravity="clip_horizontal"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:textAlignment="viewEnd">
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Articulos de Compra"
+            android:text="Articulos de Compras"
             android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            tools:visibility="visible" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:background="@android:drawable/alert_light_frame"
+            android:baselineAligned="false"
+            android:ems="10"
+            android:gravity="start"
+            android:hint="Buscar"
+            android:iconifiedByDefault="true" />
 
 
     </LinearLayout>
@@ -30,8 +48,10 @@
         android:id="@+id/idRLContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="120dp"
-        android:orientation="vertical">
+        android:layout_marginTop="150dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity">
 
         <ListView
             android:id="@+id/listaArticulosCompra"
@@ -41,5 +61,26 @@
 
         </ListView>
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonAgregarArticulos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="700dp"
+        android:text="Agregar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/returnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginBottom="60dp"
+        android:text="Regresar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="@+id/searchView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

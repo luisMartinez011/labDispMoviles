@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -37,6 +38,7 @@ public class OrdenesDeCompras extends AppCompatActivity {
         if (cursor != null){
             int orderNameIndex = cursor.getColumnIndex(DBHandler.NAME_COL_ORDERS);
             int orderDescriptionIndex = cursor.getColumnIndex(DBHandler.DESCRIPTION_COL_ORDERS);
+
             while (cursor.moveToNext()){
                 String orderName = cursor.getString(orderNameIndex);
                 String orderDescription = cursor.getString(orderDescriptionIndex);
@@ -75,5 +77,13 @@ public class OrdenesDeCompras extends AppCompatActivity {
             finish();
         });
 
+        languageLV.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(OrdenesDeCompras.this, ArticulosDeCompraMain.class);
+                intent.putExtra("order_id",i+1);
+                startActivity(intent);
+            }
+        });
     }
 }

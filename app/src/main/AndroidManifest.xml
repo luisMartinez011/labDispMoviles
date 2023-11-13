@@ -38,6 +38,16 @@
             android:name=".RegistroUsuarios"
             android:exported="true">
         </activity>
+
+        <activity
+            android:name=".ArticulosDeCompraMain"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".AgregarArticulosCompras"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
