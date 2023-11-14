@@ -140,7 +140,7 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(SERIE_COL_ARTICULOS, numeroSerie);
-        values.put(ALIAS_COL_ARTICULOS, numeroSerie);
+        values.put(ALIAS_COL_ARTICULOS, alias);
         values.put(DESCRIPCION_COL_ARTICULOS, descripcion);
         values.put(ID_COL_ORDERS, orderId);
         db.insert(TABLE_NAME_ARTICULOS,null,values);

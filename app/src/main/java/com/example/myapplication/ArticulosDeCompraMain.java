@@ -37,7 +37,7 @@ public class ArticulosDeCompraMain extends AppCompatActivity {
 
         if (cursor != null){
             int orderNameIndex = cursor.getColumnIndex(DBHandler.ALIAS_COL_ARTICULOS);
-            int orderDescriptionIndex = cursor.getColumnIndex(DBHandler.SERIE_COL_ARTICULOS);
+            int orderDescriptionIndex = cursor.getColumnIndex(DBHandler.DESCRIPCION_COL_ARTICULOS);
             while (cursor.moveToNext()){
                 String orderName = cursor.getString(orderNameIndex);
                 String orderDescription = cursor.getString(orderDescriptionIndex);
