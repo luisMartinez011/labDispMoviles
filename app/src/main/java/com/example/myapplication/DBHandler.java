@@ -24,7 +24,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // ** Articulos
     private static final String TABLE_NAME_ARTICULOS = "articulos";
-    private static final String ID_COL_ARTICULOS = "id_articulos";
+    public static final String ID_COL_ARTICULOS = "id_articulos";
     public static final String SERIE_COL_ARTICULOS= "numero_serie";
     public static final String ALIAS_COL_ARTICULOS = "alias";
     public static final String DESCRIPCION_COL_ARTICULOS = "descripcion";
@@ -131,7 +131,7 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = ID_COL_ORDERS + " = ?";
         String[] selectionArgs = { String.valueOf(orderId) };
-        Cursor resultado = db.query(TABLE_NAME_ARTICULOS, null, null,  null, null, null, null);
+        Cursor resultado = db.query(TABLE_NAME_ARTICULOS, null, selection,  selectionArgs, null, null, null);
         return resultado;
     }
 
@@ -142,6 +142,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(SERIE_COL_ARTICULOS, numeroSerie);
         values.put(ALIAS_COL_ARTICULOS, numeroSerie);
         values.put(DESCRIPCION_COL_ARTICULOS, descripcion);
+        values.put(ID_COL_ORDERS, orderId);
         db.insert(TABLE_NAME_ARTICULOS,null,values);
         db.close();
     }

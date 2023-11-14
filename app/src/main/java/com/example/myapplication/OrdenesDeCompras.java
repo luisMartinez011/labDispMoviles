@@ -38,10 +38,12 @@ public class OrdenesDeCompras extends AppCompatActivity {
         if (cursor != null){
             int orderNameIndex = cursor.getColumnIndex(DBHandler.NAME_COL_ORDERS);
             int orderDescriptionIndex = cursor.getColumnIndex(DBHandler.DESCRIPTION_COL_ORDERS);
-
+//            int idIndex = cursor.getColumnIndex(DBHandler.ID_COL_ARTICULOS);
             while (cursor.moveToNext()){
+                String idindice = cursor.getString(0);
                 String orderName = cursor.getString(orderNameIndex);
                 String orderDescription = cursor.getString(orderDescriptionIndex);
+
                 lngList.add(orderName);
                 descripcionOrdenesList.add(orderDescription);
             }
