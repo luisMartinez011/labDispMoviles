@@ -82,7 +82,7 @@ public class OrdenesDeCompras extends AppCompatActivity {
         languageLV.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(OrdenesDeCompras.this, ArticulosDeCompraMain.class);
+                Intent intent = new Intent(OrdenesDeCompras.this, ArticulosDeCompras.class);
                 intent.putExtra("order_id",i+1);
                 startActivity(intent);
             }
