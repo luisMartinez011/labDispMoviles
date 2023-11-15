@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class ArticulosDeCompraMain extends AppCompatActivity {
     private ArrayList<String> aliasNombreList;
     private ArrayList<String> descripcionArticulosList;
-
+    private ArrayList<String> serialList;
 
     private int order_id;
     @Override
@@ -31,6 +31,7 @@ public class ArticulosDeCompraMain extends AppCompatActivity {
 
         aliasNombreList = new ArrayList<>();
         descripcionArticulosList = new ArrayList<>();
+        serialList = new ArrayList<>();
 
         order_id = getIntent().getIntExtra("order_id",1);
         Cursor cursor = dbHandler.getAllArticulosByOrder(order_id);
@@ -38,15 +39,20 @@ public class ArticulosDeCompraMain extends AppCompatActivity {
         if (cursor != null){
             int orderNameIndex = cursor.getColumnIndex(DBHandler.ALIAS_COL_ARTICULOS);
             int orderDescriptionIndex = cursor.getColumnIndex(DBHandler.DESCRIPCION_COL_ARTICULOS);
+            int serialIndex = cursor.getColumnIndex(DBHandler.SERIE_COL_ARTICULOS);
+
             while (cursor.moveToNext()){
                 String orderName = cursor.getString(orderNameIndex);
                 String orderDescription = cursor.getString(orderDescriptionIndex);
+                String serial = cursor.getString(serialIndex);
+
                 aliasNombreList.add(orderName);
                 descripcionArticulosList.add(orderDescription);
+                serialList.add(serial);
             }
         }
 
-        ArticulosDeComprasAdapter adapter=new ArticulosDeComprasAdapter(this, aliasNombreList, descripcionArticulosList);
+        ArticulosDeComprasAdapter adapter=new ArticulosDeComprasAdapter(this, aliasNombreList, descripcionArticulosList, serialList);
 
         languageLV.setAdapter(adapter);
         addBtn.setOnClickListener(new View.OnClickListener() {

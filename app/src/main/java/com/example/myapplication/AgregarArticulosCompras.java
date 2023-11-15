@@ -25,9 +25,9 @@ public class AgregarArticulosCompras  extends AppCompatActivity {
         setContentView(R.layout.agregar_articulos_compra_manual);
 
         // on below line we are initializing our variables.
-        numeroArticulo = findViewById(R.id.agregarSerialArticulo);
+//        numeroArticulo = findViewById(R.id.agregarSerialArticulo);
         aliasArticulo = findViewById(R.id.agregarAliasArticulo);
-        descripcionArticulo = findViewById(R.id.agregarDescripcionArticulo);
+//        descripcionArticulo = findViewById(R.id.agregarDescripcionArticulo);
         addBtn = findViewById(R.id.btnAgregarArticulosCompra);
 
         DBHandler dbHandler = new DBHandler(AgregarArticulosCompras.this);
@@ -40,13 +40,17 @@ public class AgregarArticulosCompras  extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the order details from the EditText fields.
-                String numero =  numeroArticulo.getText().toString();
+                // Descomentarizar
+//                String numero =  numeroArticulo.getText().toString();
+//                String alias = aliasArticulo.getText().toString();
+//                String descripcion = descripcionArticulo.getText().toString();
+
+                String numero = "4344";
                 String alias = aliasArticulo.getText().toString();
-                String descripcion = descripcionArticulo.getText().toString();
+                String descripcion = "Descripcion de producto generico";
 
                 // Check if the order name is not empty.
-                if (numeroArticulo.getText().toString().length() > 1) {
+                if (aliasArticulo.getText().toString().length() > 1) {
 
                     // Add the order to the database using the DBHandler.
                     DBHandler dbHandler = new DBHandler(AgregarArticulosCompras.this);
