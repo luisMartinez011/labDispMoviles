@@ -78,10 +78,10 @@ public class ArticulosDeCompraMain extends AppCompatActivity {
             }
         });
 
-        Button backButton = findViewById(R.id.returnButton);
-        backButton.setOnClickListener(v -> {
-            finish();
-        });
+//        Button backButton = findViewById(R.id.returnButton);
+//        backButton.setOnClickListener(v -> {
+//            finish();
+//        });
 
     }
 }

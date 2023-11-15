@@ -8,13 +8,15 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="414dp"
+        android:layout_width="0dp"
         android:layout_height="120dp"
         android:background="#2A54D1"
         android:gravity="clip_horizontal"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:textAlignment="viewEnd">
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <TextView
@@ -42,7 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.484" />
 
-    <EditText
+<!--    <EditText-->
 <!--        android:id="@+id/agregarSerialArticulo"-->
 <!--        android:layout_width="250dp"-->
 <!--        android:layout_height="wrap_content"-->

@@ -9,10 +9,11 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="294dp"
-        android:layout_height="198dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#040303"
         android:text="Registro de Empaques"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

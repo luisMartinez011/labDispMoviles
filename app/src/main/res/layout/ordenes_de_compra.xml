@@ -72,13 +72,13 @@ android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
-    <Button
-        android:id="@+id/returnButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
-        android:layout_marginBottom="60dp"
-        android:text="Regresar"
-        app:layout_constraintBottom_toBottomOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/returnButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="280dp"-->
+<!--        android:layout_marginBottom="60dp"-->
+<!--        android:text="Regresar"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

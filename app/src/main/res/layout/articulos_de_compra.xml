@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="414dp"
+        android:layout_width="0dp"
         android:layout_height="130dp"
         android:background="#2A54D1"
         android:gravity="clip_horizontal"
@@ -74,13 +74,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
-    <Button
-        android:id="@+id/returnButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
-        android:layout_marginBottom="60dp"
-        android:text="Regresar"
-        app:layout_constraintBottom_toBottomOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/returnButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="280dp"-->
+<!--        android:layout_marginBottom="60dp"-->
+<!--        android:text="Regresar"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
